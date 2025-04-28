@@ -1,11 +1,10 @@
 <script setup>
 import { createClient } from '@supabase/supabase-js'
+import axios from 'axios'
 import { ref, onMounted } from 'vue'
 
-// const { public: { supabaseUrl, supabaseKey } } = useRuntimeConfig()
-const supabase = useSupabaseClient()
-// console.log(`supabase:\n`)
-// console.log(supabase)
+const runtimeConfig = useRuntimeConfig()
+const _apiRoot = runtimeConfig.public.apiRoot
 const flightData = ref([])
 const isLoading = ref(true)
 const error = ref(null)
@@ -32,15 +31,10 @@ const formatDate = (dateString) => {
 async function fetchData() {
   try {
     isLoading.value = true
-    const { data, error: supabaseError } = await supabase
-      .from('FlightInterest')
-      .select('*')
-      .limit(100) // Add a limit for safety
-    // console.log('data:')
-    // console.log(data)
-    if (supabaseError) throw supabaseError
-    flightData.value = data
-    // console.log('Data loaded:', data)
+    const data = await axios.get(`${_apiRoot}/data/flight-interest`)
+    console.log(`Flights from flight table:`)
+    flightData.value = data.data
+    console.log(flightData.value)
   } catch (err) {
     error.value = err.message
     console.error('Error fetching data:', err)

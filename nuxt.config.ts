@@ -2,19 +2,30 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
+  components: [
+    {
+      path: "~/components/flights",
+      prefix: "Flights",
+    },
+    /*
+    {
+      path: "~/components/shuttles",
+      prefix: "Shuttles"
+    },
+    */
+    "~/components",
+  ],
   build: {
-    transpile: ['@vue-leaflet/vue-leaflet']
+    transpile: ["@vue-leaflet/vue-leaflet"],
   },
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  css: ['~/assets/css/main.css'],
-  vite:{
-    plugins:[
-      tailwindcss()
-    ],
+  css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['leaflet']
-    }
+      include: ["leaflet"],
+    },
   },
   modules: ["@nuxtjs/supabase", "@nuxt/ui"],
   supabase: {
@@ -27,6 +38,7 @@ export default defineNuxtConfig({
     public: {
       supabaseUrl: process.env.SUPABASE_URL,
       supabaseKey: process.env.SUPABASE_ANON_KEY,
+      apiRoot: process.env.API_ROOT,
     },
   },
 });

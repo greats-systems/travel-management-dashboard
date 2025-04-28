@@ -13,7 +13,7 @@
   const FlightMap = shallowRef(null)
   
   const loadMap = async () => {
-    FlightMap.value = (await import('../components/FlightMap.vue')).default
+    FlightMap.value = (await import('../components/flights/FlightMap.vue')).default
     showMap.value = true
   }
   </script>

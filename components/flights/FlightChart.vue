@@ -1,4 +1,5 @@
 <template>
+    
     <div class="bg-white p-4 rounded-lg shadow">
       <Bar 
         v-if="chartData" 
@@ -25,6 +26,7 @@
     LinearScale 
   } from 'chart.js'
   
+  
   // Register ChartJS components
   ChartJS.register(
     Title, 
@@ -44,6 +46,7 @@
   
   const chartKey = ref(0)
   const chartData = ref(null)
+  const runtimeConfig = useRuntimeConfig()
   
   // Prepare chart data from the flight_interest_stats structure
   const prepareChartData = () => {
