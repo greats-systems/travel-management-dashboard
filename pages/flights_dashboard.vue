@@ -41,16 +41,16 @@ onMounted(() => fetchData())
 <template>
   <Navbar></Navbar>
   <div class="space-y-6 p-4">
-      <!-- Table -->
-      <div class="bg-white p-4 rounded-lg shadow max-h-96 overflow-y-auto">
-        <FlightsFlightTable />
-      </div>
-
-      <!-- Chart -->
-      <div class="bg-white p-4 rounded-lg shadow max-h-1/10 overflow-y-auto">
+    <!-- Chart -->
+    <div class="bg-white p-4 rounded-lg shadow max-h-1/10 overflow-y-auto">
         <h2 class="text-xl font-semibold mb-4">Passenger Demand</h2>
         <FlightsFlightChart :flight-data="flightData" />
       </div>
+      
+      <!-- Table -->
+      <div class="bg-white p-4 rounded-lg shadow max-h-96 overflow-y-auto">
+        <FlightsFlightTable />
+      </div>      
     </div>
 </template>
 

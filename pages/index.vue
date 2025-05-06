@@ -1,19 +1,8 @@
 <!-- pages/index.vue -->
 <template>
-    <div>
-      <button @click="loadMap">Show Flight Map</button>
-      <div v-if="showMap">
-        <FlightMap :flight-data="flightData" />
-      </div>
-    </div>
+    <flights_dashboard></flights_dashboard>
   </template>
   
   <script setup>
-  const showMap = ref(false)
-  const FlightMap = shallowRef(null)
-  
-  const loadMap = async () => {
-    FlightMap.value = (await import('../components/flights/FlightMap.vue')).default
-    showMap.value = true
-  }
+  import flights_dashboard from './flights_dashboard.vue';
   </script>
